@@ -2915,7 +2915,7 @@ static int wcd_cpe_send_param_snd_model(struct wcd_cpe_core *core,
 	struct cmi_obm_msg obm_msg;
 	struct cpe_param_data *param_d;
 
-
+	memset(&obm_msg, 0, sizeof(obm_msg));
 	ret = fill_cmi_header(&obm_msg.hdr, session->id,
 			CMI_CPE_LSM_SERVICE_ID, 0, 20,
 			CPE_LSM_SESSION_CMD_SET_PARAMS_V2, true);
@@ -3180,6 +3180,7 @@ static int wcd_cpe_lsm_reg_snd_model(void *core_handle,
 	struct cmi_obm_msg obm_msg;
 	struct wcd_cpe_core *core = core_handle;
 
+	memset(&obm_msg, 0, sizeof(obm_msg));
 	ret = wcd_cpe_is_valid_lsm_session(core, session,
 					   __func__);
 	if (ret)
@@ -4144,6 +4145,7 @@ static int wcd_cpe_send_afe_cal(void *core_handle,
 	int rc = 0;
 	bool is_obm_msg;
 
+	memset(&obm_msg, 0, sizeof(obm_msg));
 	if (core->cal_data[WCD_CPE_LSM_CAL_AFE] == NULL) {
 		pr_err("%s: LSM cal not allocated!\n",
 			__func__);

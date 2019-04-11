@@ -2700,9 +2700,7 @@ static int mdss_rotator_get_dt_vreg_data(struct device *dev,
 {
 	const char *st = NULL;
 	struct device_node *of_node = NULL;
-	int dt_vreg_total = 0;
-	int i;
-	int rc;
+	int dt_vreg_total = 0, i = 0, rc = 0;
 
 	if (!dev || !mp) {
 		DEV_ERR("%s: invalid input\n", __func__);
@@ -2858,7 +2856,7 @@ error:
 
 static int mdss_rotator_probe(struct platform_device *pdev)
 {
-	int ret;
+	int ret = 0;
 
 	rot_mgr = devm_kzalloc(&pdev->dev, sizeof(struct mdss_rot_mgr),
 		GFP_KERNEL);
